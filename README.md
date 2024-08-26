@@ -1,5 +1,6 @@
 # rabbithole-native
-This is a basic app that uses the rabbithole API (rabbit r1) to read journal entries.
+##### you need to have a rabbit r1 to use this project
+This is a basic app that uses the [rabbithole API](https://hole.rabbit.tech/journal) to read journal entries.
 ## how to run (not for daily use):
 1. download 'Expo Go' on app store / google play store
 2. install dependencies: `npm i`
