@@ -9,5 +9,4 @@ This is a basic app that uses the [rabbithole API](https://hole.rabbit.tech/jour
 4.1 if you have an android device, open up the Expo Go app, click on 'Scan QR Code' and scan the qr code that appeared in your terminal
 4.2 if you have a device with iOS/iPadOS, scan the qr code that appeared in the terminal with the camera app
 ## how to build:
-Here's a link to the offical Expo Go website on how to build a react native app:
-https://docs.expo.dev/build/setup/
+Don't. Atleast for now.
