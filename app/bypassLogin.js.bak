@@ -1,0 +1,69 @@
+const api_key = "CAP-A882DF7A1B2146E82628997CA6AC0C9C";
+const site_key = "0x4AAAAAAAQFNSW6xordsuIq";
+const site_url = "https://login.rabbit.tech/";
+
+async function capsolver() {
+  const payload = {
+    clientKey: api_key,
+    task: {
+      type: 'AntiTurnstileTaskProxyLess',
+      websiteKey: site_key,
+      websiteURL: site_url,
+      metadata: {
+          action: ''  // optional
+      }
+    }
+  };
+
+  try {
+    // const res = await axios.post("https://api.capsolver.com/createTask", payload);
+    const response = await fetch("https://api.capsolver.com/createTask", {
+        headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+        body: JSON.stringify(payload),
+    // ...
+    });
+    const res = await response.json();
+    console.log(res)
+    const task_id = res["taskId"];
+    if (typeof task_id == 'undefined') {
+      console.log("Failed to create task:", res);
+      return;
+    }
+    console.log("Got taskId:", task_id);
+
+    while (true) {
+      await new Promise(resolve => setTimeout(resolve, 1000)); // Delay for 1 second
+
+      const getResultPayload = {clientKey: api_key, taskId: task_id};
+      //const resp = await axios.post("https://api.capsolver.com/getTaskResult", getResultPayload);
+      const req = await fetch("https://api.capsolver.com/getTaskResult", {
+        headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+        body: JSON.stringify(getResultPayload),
+    // ...
+    });
+    const resp = await req.json();
+    console.log(resp);
+      const status = resp.status;
+
+      if (status === "ready") {
+        return resp.solution.token;
+      }
+      if (status === "failed" || resp.errorId) {
+        console.log("Solve failed! response:", resp);
+        return;
+      }
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+capsolver().then(token => {
+  console.log(token);
+});
