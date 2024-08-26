@@ -20,7 +20,9 @@ export default function LoginPage() {
   const [token, setToken] = useState('');
 
   SecureStore.getItemAsync("token").then(token => {
-    router.replace({pathname: "/JournalMain"})
+    if(token) {
+      router.replace({pathname: "/JournalMain"})
+    }
   })
 
   const handleLogin = async() => {

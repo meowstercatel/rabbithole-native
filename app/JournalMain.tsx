@@ -23,13 +23,15 @@ export default function RabbitholeUI() {
     //if (!fetchedEntries) {
     useEffect(() => {
         // console.log(rabbitHoleClient.accessToken);
+
         SecureStore.getItemAsync("token").then(secureToken => {
-            if(!secureToken) {
-                router.replace("/loginPage");
-                return;
-            }
-            rabbitHoleClient.accessToken = secureToken;
-            rabbitHoleClient.fetchUserJournal().then(response => { console.log(response.status); return response.json() }).then(data => {
+        //     if(!secureToken) {
+        //         router.replace("/loginPage");
+        //         return;
+        //     }
+
+            rabbitHoleClient.accessToken = secureToken ? secureToken : "123";
+            rabbitHoleClient.fetchUserJournal().then(response => { if(response.status == 500) {router.replace("/loginPage")}; return response.json() }).then(data => {
                 let entries = [];
                 for (const entry of data.journal.entries) {
                     const question = entry.title;
