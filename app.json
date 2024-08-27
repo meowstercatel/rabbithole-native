@@ -14,9 +14,6 @@
     },
     "ios": {
       "supportsTablet": true,
-      "config": {
-        "usesNonExemptEncryption": false
-      },
       "bundleIdentifier": "com.meowster.rabbitholenative"
     },
     "android": {
@@ -45,6 +42,12 @@
       "eas": {
         "projectId": "6ed9ac25-a0f2-48cc-b66c-fee83197e684"
       }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/6ed9ac25-a0f2-48cc-b66c-fee83197e684"
     }
   }
 }
