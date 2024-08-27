@@ -10,3 +10,4 @@ This is a basic app that uses the [rabbithole API](https://hole.rabbit.tech/jour
 4.2 if you have a device with iOS/iPadOS, scan the qr code that appeared in the terminal with the camera app
 ## how to build:
 Don't. Atleast for now.
+Here's a link to a built APK: https://expo.dev/accounts/meowster/projects/rabbithole-native/builds/65745429-b88f-4323-a7c3-b6df1f8561ed
